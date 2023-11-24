@@ -19,7 +19,18 @@ namespace TecnologicoApp.ViewModels
 
         public MainPageViewModel()
         {
+            List<UsuarioRegistro> usuario = new List<UsuarioRegistro>
+           {
+           new UsuarioRegistro {Email = "moises@istlcg.com" , Password = "Moises1234." },
+           new UsuarioRegistro {Email = "gus@mail.com" , Password = "Guayaquil" },
+
+            
+            };
+
+            //ListaUsuario.ItemsSource = usuario;
+
             Usuario = new UsuarioRegistro();
+
             LoginCommand = new Command(LoginAsync);
         }
 

@@ -17,7 +17,16 @@
                 Source="login.png"
                 WidthRequest="100" />
             <StackLayout Padding="40" Spacing="30">
-                <Entry
+
+                <ListView x:Name="ListaUsuario">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Detail="{Binding usuario.Email}" Text="{Binding usuario.Password}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+               <Entry
                     x:Name="EmailEntry"
                     HorizontalOptions="Center"
                     Keyboard="Email"
