@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using TecnologicoApp.Models;
@@ -7,7 +6,7 @@ using TecnologicoApp.Views;
 
 namespace TecnologicoApp.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class LoginPageViewModel : INotifyPropertyChanged
     {
         #region "Properties"
 
@@ -17,20 +16,9 @@ namespace TecnologicoApp.ViewModels
 
         #endregion
 
-        public MainPageViewModel()
+        public LoginPageViewModel()
         {
-            List<UsuarioRegistro> usuario = new List<UsuarioRegistro>
-           {
-           new UsuarioRegistro {Email = "moises@istlcg.com" , Password = "Moises1234." },
-           new UsuarioRegistro {Email = "gus@mail.com" , Password = "Guayaquil" },
-
-            
-            };
-
-            //ListaUsuario.ItemsSource = usuario;
-
             Usuario = new UsuarioRegistro();
-
             LoginCommand = new Command(LoginAsync);
         }
 
@@ -50,7 +38,9 @@ namespace TecnologicoApp.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync(nameof(WelcomePage));
+            Settings.IsAuthenticated = true;
+
+            await Shell.Current.GoToAsync($"///{nameof(WelcomePage)}");
         }
 
         private bool IsAValidEmail(string email)
